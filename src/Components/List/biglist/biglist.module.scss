@@ -1,0 +1,41 @@
+.top{
+	height: 46px;
+	line-height: 46px;
+	font-size: 16px;
+	text-align: center;
+	border-bottom: 1px solid #f2f2f2;
+	position: fixed;
+	background-color: #fff;
+	margin-bottom: 10px;
+	left: 0;
+	top: 0;
+	width: 100%;
+	i{
+		width: 46px;
+		height: 46px;
+		position: absolute;
+		left: 0;
+		right: 0;
+	}
+	i::before{
+			font-size: 24px;
+			color: #ccc;
+	}
+}
+.minWorld{
+	margin-top: 57px;
+	padding-left: 5px;
+	padding-right: 5px;
+	.abc{
+		height: 35px;
+		background-color: #f6f6f6;
+		line-height: 35px;
+		font-size: 16px;
+	}
+	.val{
+		height: 35px;
+		line-height: 35px;
+		font-size: 14px;
+		color: #666;
+	}
+}
