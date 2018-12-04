@@ -23,27 +23,25 @@ class Detail extends Component{
 					<i className="iconfont icon-zuojiantou"></i>
 					<p className={css.title}>{this.state.datalist.ProductName}</p>
 				</header>
-				<div>
-					<ul className={css.nav}>
+				<div className={css.nav}>
+					<ul className={css.navlist}>
 						<li className={css.on} onClick={this.handleClick.bind(this,1)} ref="product">商品</li>
 						<li onClick={this.handleClick.bind(this,2)} ref="info">详情</li>
 						<li onClick={this.handleClick.bind(this,3)} ref="evaluate">评价</li>
 					</ul>
 				</div>
-				<div className="swiper-container kerwina">
-					  <div className="swiper-wrapper">
-
-							{
-								this.state.piclist.map(item=>
-									<div className="swiper-slide" key={item}>
-										<div style={{height:'100px',display: 'table-cell',verticalAlign:"middle"}}>
-											<img src={item}/>
-										</div>
-									</div>
-								)
-							}
-					  </div>
-					</div>
+				<div className={"swiper-container wen "+css.ss}>
+				    <div className="swiper-wrapper">
+				      {
+				      	this.state.piclist.map(item=>
+				      			<div className="swiper-slide" key={item}>
+				      				<img src={item}/>
+				      			</div>
+				      		)
+				      }
+				    </div>
+				   <div className="swiper-pagination"></div>
+				</div>
 			</div>
 		)
 	}
@@ -68,31 +66,28 @@ class Detail extends Component{
 			this.setState({
 				datalist:res.data.data
 			},()=>{
+				var a = res.data.data.APPIntro
+				var b = /http\b.*?(?:.jpg)/gi;
+				var arr = [];
+				arr = a.match(b)
+				console.log(a.match(b))
 				this.setState({
-					piclist:res.data.data.listpic
+					piclist:arr
+				},()=>{
+					var swiper = new Swiper(".wen",{
+					     pagination: {
+					       el: '.swiper-pagination',
+					     },
+					     loop: true,
+			     	     autoplay: {
+			                  delay: 2500,
+			                  disableOnInteraction: false,
+			                }
+					   });
 				});
-				 var mySwiper = new Swiper ('.swiper-container', {
-				    direction: 'vertical', // 垂直切换选项
-				    loop: true, // 循环模式选项
-				    
-				    // 如果需要分页器
-				    pagination: {
-				      el: '.swiper-pagination',
-				    },
-				    
-				    // 如果需要前进后退按钮
-				    navigation: {
-				      nextEl: '.swiper-button-next',
-				      prevEl: '.swiper-button-prev',
-				    },
-				    
-				    // 如果需要滚动条
-				    scrollbar: {
-				      el: '.swiper-scrollbar',
-				    },
-				  })  
 			})
 		})
+		
 	}
 	componentWillUnmount(){
 		this.props.showNav();
