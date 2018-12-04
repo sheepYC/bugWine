@@ -1,3 +1,3 @@
+import mineList from "./mineList.js"
 
-
-export default {}
+export default {mineList}
