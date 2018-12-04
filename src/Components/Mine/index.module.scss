@@ -14,6 +14,11 @@
 		}
 		.noLoginDiv{
 			float: left;
+			margin-top:0.3rem;
+			font-size: 0.14rem;
+		}
+		.bianse{
+			color:white;
 		}
 	}
 }
@@ -25,13 +30,21 @@
 		height:0.44rem;
 		box-sizing: border-box;
 		padding: 0.1rem 0.15rem;
-		clear: left;
+		clear: both;
 		.sP{
 			font-size:0.12rem;
 			line-height: 0.24rem;
 			float: left;
 			margin:0.05rem 0;
 			color:#333;
+		}
+		.you{
+			font-size:0.12rem;
+			line-height: 0.24rem;
+			float: left;
+			margin:0.05rem 0;
+			color:#333;
+			float:right;
 		}
 	}
 	.order{
@@ -63,13 +76,21 @@
 		height:0.44rem;
 		box-sizing: border-box;
 		padding: 0.1rem 0.15rem;
-		clear: left;
+		clear: both;
 		.sP{
 			font-size:0.12rem;
 			line-height: 0.24rem;
 			float: left;
 			margin:0.05rem 0;
 			color:#333;
+		}
+		.you{
+			font-size:0.12rem;
+			line-height: 0.24rem;
+			float: left;
+			margin:0.05rem 0;
+			color:#333;
+			float: right;
 		}
 	}
 	.wallet{

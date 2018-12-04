@@ -1,6 +1,6 @@
 import {Route} from 'react-router-dom';
 import React from 'react';
-import Minisite from '../Components/ShopCar/'
+import Minisite from '../Components/Minisite/'
 
 const RouterMinisite = (props)=>{
 		return (

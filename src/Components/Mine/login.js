@@ -4,10 +4,8 @@ import css from "./index.module.scss"
 import {connect} from "react-redux"
 import axios from "axios"
 import action from "./action"
-import Swiper from "swiper"
-import "swiper/dist/css/swiper.css"
 
-class Mine extends Component{
+class Login extends Component{
 	constructor(props) {
 	  super(props);
 	
@@ -18,16 +16,10 @@ class Mine extends Component{
 	render(){
 		return(
 			<div>
-				{this.props.children}
+				Login
 			</div>
 		)
 	}
-	componentWillMount(){
-		this.props.hideFalse();
-	}
-	componentWillUnmount(){
-		this.props.showTrue();
-	}
 }
 
-export default connect(null,action)(Mine)
+export default Login

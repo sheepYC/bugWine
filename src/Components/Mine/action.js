@@ -11,6 +11,18 @@ const action = {
 				payload:res.data.data
 			}
 		})
+	},
+	showTrue(){
+		return{
+			type:"showNav",
+			payload:true
+		}
+	},
+	hideFalse(){
+		return{
+			type:"hideNav",
+			payload:false
+		}
 	}
 }
 
