@@ -1,0 +1,32 @@
+.box{
+	display:flex;
+	height:.30rem;
+	margin-bottom:.02rem;
+	img{
+		width:.80rem;
+		height:.15rem;
+		margin-left:.20rem;
+		display:block;
+		margin-top:.05rem;
+	}
+	>div{
+		border-left:.01rem solid gray;
+		margin-left:.10rem;
+		padding-left:.15rem;
+		font-size:.13rem;
+		line-height:.25rem;
+	}
+}
+.list{
+	display:flex;
+	width:90%;
+	margin:auto;
+	margin-top:.25rem;
+	li{
+		flex:1;
+		img{
+			width:.69rem;
+			height:.69rem;
+		}
+	}
+}
