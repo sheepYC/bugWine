@@ -1,0 +1,31 @@
+
+ul{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background: white;
+	display: flex;
+	li{
+		flex: 1;
+		text-align: center;
+		padding-bottom: 5px;
+		padding-top: 5px;
+		i::before{
+			font-size: 22px;
+		}
+		p{
+			font-size: 12px;
+		}
+	}
+}
+.minisite{
+	background: url(http://m.gjw.com/images/bag.png) no-repeat;
+	background-size: 100%;
+	display: inline-block;
+	height: 21px;
+	width: 22px;
+}
+.hide{
+	display: none;
+}

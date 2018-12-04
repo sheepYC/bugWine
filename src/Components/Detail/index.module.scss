@@ -1,0 +1,44 @@
+header{
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 46px;
+	background: white;
+	border-bottom:1px solid #e5e5e5;
+	i{
+		position: absolute;
+		left: 10px;
+		line-height: 46px;
+	}
+	.title{
+		line-height: 46px;
+		margin: 0 auto;
+	    max-width: 60%;
+	    font-size: 16px;
+        overflow: hidden;
+	    white-space: nowrap;
+	    text-overflow: ellipsis;
+	}
+}
+.nav{
+	display: flex;
+	top: 70px;
+	left: 0;
+	width: 100%;
+	height: 44px;
+	line-height: 44px;
+	font-size: 14px;
+	li{
+		height: 44px;
+		flex:1;
+	}
+}
+.on{
+	color:red;
+	border-bottom: 2px solid #f44;
+}
+.swipe{
+	position: relative;
+	top:124px;
+}
