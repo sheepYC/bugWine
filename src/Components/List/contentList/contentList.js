@@ -56,7 +56,7 @@ class contentList extends Component{
 						this.state.arr.map(data=>{
 							return<div key={data.ID} className={css.box}>
 								<div>
-									<NavLink to="/detail/">
+									<NavLink to={'/detail/' + data.ID}>
 										<img className={css.img} src={'http://img0.gjw.com/product/' + data.Pic}/>
 										<p className={css.name}>{data.ProductName}</p>
 										<p className={css.money}><span style={{color: 'red',fontWeight: 700}}>¥</span>{data.APPPrice}</p>

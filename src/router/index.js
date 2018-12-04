@@ -18,7 +18,7 @@ const router = <Provider store={store}>
 					<Route path="/list" render={List} />
 					<Route path="/shopcar" render={ShopCar} />
 					<Route path="/mine" render={Mine} />
-					<Route path="/detail" render={Detail} />
+					<Route path="/detail/:id" render={Detail} />
 					<Route path="/minisite" render={Minisite} />
 					<Redirect from="/" to="/home"/>
 				</Switch>
