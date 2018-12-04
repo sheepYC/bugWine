@@ -21,7 +21,9 @@
 		}
 	}
 }
-
+.active{
+	color:red;
+}
 .minisite{
 	background: url(http://m.gjw.com/images/bag.png) no-repeat;
 	background-size: 100%;
@@ -31,7 +33,4 @@
 }
 .hide{
 	display: none;
-}
-.live{
-	color:red;
 }

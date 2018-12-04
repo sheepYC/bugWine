@@ -88,9 +88,9 @@ class Home extends Component {
 					</li>
 				</ul>
 				<ul>
-					<li><i class="iconfont icon-duihaocheckmark17"></i><span>正品保证</span></li>
-					<li><i class="iconfont icon-dunpai"></i><span>开箱验货</span></li>
-					<li><i class="iconfont icon-yusan01"></i><span>赔付保障</span></li>
+					<li><i className="iconfont icon-duihaocheckmark17"></i><span>正品保证</span></li>
+					<li><i className="iconfont icon-dunpai"></i><span>开箱验货</span></li>
+					<li><i className="iconfont icon-yusan01"></i><span>赔付保障</span></li>
 				</ul>
 
 				<img src="http://img0.gjw.com/famous/2018/0927/1c03a0b10a934f5fa5a6c2409a0caaa8.jpg"/>

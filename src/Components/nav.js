@@ -9,17 +9,21 @@ class Nav extends Component{
 		return (
 			<div className={css.list}>
 				<ul className={this.props.isShow?'':css.hide + " " + css.list}>
-					<li ref="1" onClick={this.handleClick.bind(this,1)}><NavLink replace to="/home"><i activeclassname="active" className="iconfont icon-home"></i><p>首页</p></NavLink></li>
-					<li ref="2" onClick={this.handleClick.bind(this,2)}><NavLink replace to="/list"><i activeclassname="active" className="iconfont icon-fenlei"></i><p>分类</p></NavLink></li>
-					{<li ref="3" onClick={this.handleClick.bind(this,3)}><NavLink replace to="/minisite"><i activeclassname="active" className={css.minisite}></i><p>专享福利</p></NavLink></li>}
-					<li ref="4" onClick={this.handleClick.bind(this,4)}><NavLink replace to="/shopcar"><i activeclassname="active" className="iconfont icon-icon--"></i><p>购物车</p></NavLink></li>
-					<li ref="5" onClick={this.handleClick.bind(this,5)}><NavLink replace to="/mine"><i activeclassname="active" className="iconfont icon-wode"></i><p>我的</p></NavLink></li>
+					<li ref="1" onClick={this.handleClick.bind(this)}><NavLink replace to="/home" activeClassName={css.active}><i className="iconfont icon-home"></i><p>首页</p></NavLink></li>
+					<li ref="2" onClick={this.handleClick.bind(this)}><NavLink replace to="/list" activeClassName={css.active}><i className="iconfont icon-fenlei"></i><p>分类</p></NavLink></li>
+					<li ref="3" onClick={this.handleClick.bind(this)}><NavLink replace to="/minisite" activeClassName={css.active}><i className={css.minisite}></i><p>专享福利</p></NavLink></li>
+					<li ref="4" onClick={this.handleClick.bind(this)}><NavLink replace to="/shopcar" activeClassName={css.active}><i className="iconfont icon-icon--"></i><p>购物车</p></NavLink></li>
+					<li ref="5" onClick={this.handleClick.bind(this)}><NavLink replace to="/mine" activeClassName={css.active}><i className="iconfont icon-wode"></i><p>我的</p></NavLink></li>
 				</ul>
 			</div>
 		)
 	}
-	handleClick(index,evt){
-		console.log(this.refs)
+	handleClick(evt){
+		var a = document.querySelectorAll("li a");
+		for(var i=0;i<a.length;i++){
+			a[i].className = ''
+		}
+		evt.target.parentNode.className = css.active
 	}
 }
 
