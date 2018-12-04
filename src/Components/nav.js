@@ -8,7 +8,7 @@ class Nav extends Component{
 	render(){
 		return (
 			<div className={css.list}>
-				<ul className={this.props.isShow?'':css.hide + " " + css.list}>
+				<ul className={this.props.isShow?'':css.hide}>
 					<li ref="1" onClick={this.handleClick.bind(this)}><NavLink replace to="/home" activeClassName={css.active}><i className="iconfont icon-home"></i><p>首页</p></NavLink></li>
 					<li ref="2" onClick={this.handleClick.bind(this)}><NavLink replace to="/list" activeClassName={css.active}><i className="iconfont icon-fenlei"></i><p>分类</p></NavLink></li>
 					<li ref="3" onClick={this.handleClick.bind(this)}><NavLink replace to="/minisite" activeClassName={css.active}><i className={css.minisite}></i><p>专享福利</p></NavLink></li>
