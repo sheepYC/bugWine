@@ -9,7 +9,10 @@ class contentList extends Component{
 		super(props)
 		this.state = {
 			arr: [],
-			zonghe: {}
+			zonghe: {},
+			pd: 0,
+			index: 1,
+			isshow: false
 		}
 	}
 	render(){
@@ -31,20 +34,20 @@ class contentList extends Component{
 					</div>
 					<div className={css.paixu}>
 						<div className={css.c} onClick={this.zonghe.bind(this)}>综合</div>
-						<div className={css.c} onClick={this.xiaoliang.bind(this)}>销量</div>
+						<div className={css.c} onClick={this.xiaoliang.bind(this,true)}>销量</div>
 						<div className={css.c} onClick={this.jiage.bind(this)}>价格</div>
 					</div>
 					{this.state.zonghe.c === 'pingjiazuiduo'?
 					<div className={css.xianshi}>
-						<p className={css.xxx} onClick={this.pingjiazuiduo.bind(this)}>{this.state.zonghe.a}</p>
-						<p onClick={this.zuixinchanpin.bind(this)}>{this.state.zonghe.b}</p>
+						<p className={css.xxx} onClick={this.pingjiazuiduo.bind(this,true)}>{this.state.zonghe.a}</p>
+						<p onClick={this.zuixinchanpin.bind(this,true)}>{this.state.zonghe.b}</p>
 					</div>
 					:''
 					}
 					{this.state.zonghe.c === 'youdidaogao'?
 					<div className={css.xianshi}>
-						<p className={css.xxx} onClick={this.youdidaogao.bind(this)}>{this.state.zonghe.a}</p>
-						<p onClick={this.yougaodaodi.bind(this)}>{this.state.zonghe.b}</p>
+						<p className={css.xxx} onClick={this.youdidaogao.bind(this,true)}>{this.state.zonghe.a}</p>
+						<p onClick={this.yougaodaodi.bind(this,true)}>{this.state.zonghe.b}</p>
 					</div>
 					:''
 					}
@@ -65,9 +68,13 @@ class contentList extends Component{
 								</div>
 							</div>
 						})
-						:''
+						:<div>
+							loading......
+						</div>
 					}
-
+					{this.state.isshow?
+						<div>loading......</div>
+					:''}
 				</div>
 			</div>
 		)
@@ -75,74 +82,151 @@ class contentList extends Component{
 	componentDidMount(){
 		axios.get('/BtCApi/List/GetProListWhere?ParentID=' + this.props.match.params.parentId + '&brand=' + this.props.match.params.id + '&strWhere=0,0,0,0,0&sort=0&PageIndex=1&PageSize=20&userID=299221').then(data=>{
 			if (data.data.data) {
-				console.log(data.data.data.Prolist);
 				this.setState({
 					arr: data.data.data.Prolist
+				})
+				window.onscroll = ()=>{
+					var c;
+					this.state.isshow?c=100:c=0
+					if ((window.document.documentElement.scrollTop || window.document.body.scrollTop) >= window.document.documentElement.offsetHeight - window.document.documentElement.clientHeight + c) {
+						var a;
+						var b = this.state.index + 1
+						this.setState({
+							index: b,
+							isshow: true
+						})
+						if (this.state.pd == 0) {
+							this.xiaoliang.call(this)
+						} else if (this.state.pd == 1) {
+							this.pingjiazuiduo.call(this)
+						} else if (this.state.pd == 2) {
+							this.zuixinchanpin.call(this)
+						} else if (this.state.pd == 5) {
+							this.youdidaogao.call(this)
+						} else if (this.state.pd == 4) {
+							this.yougaodaodi.call(this)
+						}
+					}
+				}
+			}
+		})
+	}
+	xiaoliang(isshows){
+		if (isshows) {
+			this.setState({
+				index: 1
+			})
+		}
+		this.setState({
+			zonghe: {},
+			pd: 0
+		})
+		axios.get('/BtCApi/List/GetProListWhere?ParentID=' + this.props.match.params.parentId + '&brand=' + this.props.match.params.id + '&strWhere=0,0,0,0,0&sort=0&PageIndex=' + this.state.index + '&PageSize=20&userID=299221').then(data=>{
+			if (data.data.data) {
+				if (isshows) {
+					var val = data.data.data.Prolist
+				} else {
+					var val = [...this.state.arr,...data.data.data.Prolist]
+				}
+				this.setState({
+					arr: val,
+					isshow: false
 				})
 			}
 		})
 	}
-	xiaoliang(){
+	pingjiazuiduo(isshows){
+		if (isshows) {
 			this.setState({
-				zonghe: {}
+				index: 1
 			})
-		axios.get('/BtCApi/List/GetProListWhere?ParentID=' + this.props.match.params.parentId + '&brand=' + this.props.match.params.id + '&strWhere=0,0,0,0,0&sort=0&PageIndex=1&PageSize=20&userID=299221').then(data=>{
+		}
+		this.setState({
+			zonghe: {},
+			pd: 1
+		})
+		axios.get('/BtCApi/List/GetProListWhere?ParentID=' + this.props.match.params.parentId + '&brand=' + this.props.match.params.id + '&strWhere=0,0,0,0,0&sort=1&PageIndex=' + this.state.index + '&PageSize=20&userID=299221').then(data=>{
 			if (data.data.data) {
-				console.log(data.data.data.Prolist);
+				if (isshows) {
+					var val = data.data.data.Prolist
+				} else {
+					var val = [...this.state.arr,...data.data.data.Prolist]
+				}
 				this.setState({
-					arr: data.data.data.Prolist
+					arr: val,
+					isshow: false
 				})
 			}
 		})
 	}
-	pingjiazuiduo(){
+	zuixinchanpin(isshows){
+		if (isshows) {
 			this.setState({
-				zonghe: {}
+				index: 1
 			})
-		axios.get('/BtCApi/List/GetProListWhere?ParentID=' + this.props.match.params.parentId + '&brand=' + this.props.match.params.id + '&strWhere=0,0,0,0,0&sort=1&PageIndex=1&PageSize=20&userID=299221').then(data=>{
+		}
+		this.setState({
+			zonghe: {},
+			pd: 2
+		})
+		axios.get('/BtCApi/List/GetProListWhere?ParentID=' + this.props.match.params.parentId + '&brand=' + this.props.match.params.id + '&strWhere=0,0,0,0,0&sort=2&PageIndex=' + this.state.index + '&PageSize=20&userID=299221').then(data=>{
 			if (data.data.data) {
-				console.log(data.data.data.Prolist);
+				if (isshows) {
+					var val = data.data.data.Prolist
+				} else {
+					var val = [...this.state.arr,...data.data.data.Prolist]
+				}
 				this.setState({
-					arr: data.data.data.Prolist
+					arr: val,
+					isshow: false
 				})
 			}
 		})
 	}
-	zuixinchanpin(){
+	youdidaogao(isshows){
+		if (isshows) {
 			this.setState({
-				zonghe: {}
+				index: 1
 			})
-		axios.get('/BtCApi/List/GetProListWhere?ParentID=' + this.props.match.params.parentId + '&brand=' + this.props.match.params.id + '&strWhere=0,0,0,0,0&sort=2&PageIndex=1&PageSize=20&userID=299221').then(data=>{
+		}
+		this.setState({
+			zonghe: {},
+			pd: 5
+		})
+		axios.get('/BtCApi/List/GetProListWhere?ParentID=' + this.props.match.params.parentId + '&brand=' + this.props.match.params.id + '&strWhere=0,0,0,0,0&sort=5&PageIndex=' + this.state.index + '&PageSize=20&userID=299221').then(data=>{
 			if (data.data.data) {
-				console.log(data.data.data.Prolist);
+				if (isshows) {
+					var val = data.data.data.Prolist
+				} else {
+					var val = [...this.state.arr,...data.data.data.Prolist]
+				}
 				this.setState({
-					arr: data.data.data.Prolist
+					arr: val,
+					isshow: false
 				})
 			}
 		})
 	}
-	youdidaogao(){
+	yougaodaodi(isshows){
+		if (isshows) {
 			this.setState({
-				zonghe: {}
+				index: 1
 			})
-		axios.get('/BtCApi/List/GetProListWhere?ParentID=' + this.props.match.params.parentId + '&brand=' + this.props.match.params.id + '&strWhere=0,0,0,0,0&sort=5&PageIndex=1&PageSize=20&userID=299221').then(data=>{
-			if (data.data.data) {
-				console.log(data.data.data.Prolist);
-				this.setState({
-					arr: data.data.data.Prolist
-				})
-			}
+		}
+		this.setState({
+			zonghe: {},
+			pd: 4
 		})
-	}
-	yougaodaodi(){
-			this.setState({
-				zonghe: {}
-			})
-		axios.get('/BtCApi/List/GetProListWhere?ParentID=' + this.props.match.params.parentId + '&brand=' + this.props.match.params.id + '&strWhere=0,0,0,0,0&sort=4&PageIndex=1&PageSize=20&userID=299221').then(data=>{
+		axios.get('/BtCApi/List/GetProListWhere?ParentID=' + this.props.match.params.parentId + '&brand=' + this.props.match.params.id + '&strWhere=0,0,0,0,0&sort=4&PageIndex=' + this.state.index + '&PageSize=20&userID=299221').then(data=>{
 			if (data.data.data) {
-				console.log(data.data.data.Prolist);
+				if (isshows) {
+					var val = data.data.data.Prolist
+				} else {
+					var val = [...this.state.arr,...data.data.data.Prolist]
+				}
 				this.setState({
-					arr: data.data.data.Prolist
+					arr: val,
+					isshow: false
 				})
 			}
 		})

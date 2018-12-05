@@ -4,9 +4,14 @@
 }
 html{
   font-size: 26.6666667vw;
+  overflow-x: hidden;
 }
 body{
+  overflow-x: hidden;
   font-size: 0.12rem;
+}
+#root{
+  overflow-x: hidden;
 }
 li{
   list-style: none;
