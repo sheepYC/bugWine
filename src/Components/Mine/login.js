@@ -20,6 +20,12 @@ class Login extends Component{
 			</div>
 		)
 	}
+	componentWillMount(){
+		this.props.hideFalse();
+	}
+	componentWillUnmount(){
+		this.props.showTrue();
+	}
 }
 
-export default Login
+export default connect(null,action)(Login)

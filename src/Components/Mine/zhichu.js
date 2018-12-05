@@ -27,6 +27,12 @@ class Zhichu extends Component{
 			</div>
 		)
 	}
+	componentWillMount(){
+		this.props.hideFalse();
+	}
+	componentWillUnmount(){
+		this.props.showTrue();
+	}
 }
 
-export default Zhichu
+export default connect(null,action)(Zhichu)

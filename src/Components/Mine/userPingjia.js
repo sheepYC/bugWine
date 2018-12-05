@@ -30,6 +30,12 @@ class UserPingjia extends Component{
 			</div>
 		)
 	}
+	componentWillMount(){
+		this.props.hideFalse();
+	}
+	componentWillUnmount(){
+		this.props.showTrue();
+	}
 }
 
-export default UserPingjia
+export default connect(null,action)(UserPingjia)

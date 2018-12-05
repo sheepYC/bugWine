@@ -30,6 +30,12 @@ class UserFUkuan extends Component{
 			</div>
 		)
 	}
+	componentWillMount(){
+		this.props.hideFalse();
+	}
+	componentWillUnmount(){
+		this.props.showTrue();
+	}
 }
 
-export default UserFUkuan
+export default connect(null,action)(UserFUkuan)

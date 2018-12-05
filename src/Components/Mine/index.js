@@ -22,12 +22,6 @@ class Mine extends Component{
 			</div>
 		)
 	}
-	componentWillMount(){
-		this.props.hideFalse();
-	}
-	componentWillUnmount(){
-		this.props.showTrue();
-	}
 }
 
-export default connect(null,action)(Mine)
+export default Mine

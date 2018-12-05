@@ -30,6 +30,12 @@ class UserCenter extends Component{
 			</div>
 		)
 	}
+	componentWillMount(){
+		this.props.hideFalse();
+	}
+	componentWillUnmount(){
+		this.props.showTrue();
+	}
 }
 
-export default UserCenter
+export default connect(null,action)(UserCenter)

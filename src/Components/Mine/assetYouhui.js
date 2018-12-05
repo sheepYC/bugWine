@@ -31,6 +31,12 @@ class assetYouhui extends Component{
 			</div>
 		)
 	}
+	componentWillMount(){
+		this.props.hideFalse();
+	}
+	componentWillUnmount(){
+		this.props.showTrue();
+	}
 }
 
-export default assetYouhui
+export default connect(null,action)(assetYouhui)

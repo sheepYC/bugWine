@@ -41,6 +41,12 @@ class MyAsset extends Component{
 			</div>
 		)
 	}
+	componentWillMount(){
+		this.props.hideFalse();
+	}
+	componentWillUnmount(){
+		this.props.showTrue();
+	}
 }
 
-export default MyAsset
+export default connect(null,action)(MyAsset)

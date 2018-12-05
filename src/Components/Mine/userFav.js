@@ -23,6 +23,12 @@ class UserFav extends Component{
 			</div>
 		)
 	}
+	componentWillMount(){
+		this.props.hideFalse();
+	}
+	componentWillUnmount(){
+		this.props.showTrue();
+	}
 }
 
-export default UserFav
+export default connect(null,action)(UserFav)

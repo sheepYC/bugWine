@@ -30,6 +30,12 @@ class UserFahuo extends Component{
 			</div>
 		)
 	}
+	componentWillMount(){
+		this.props.hideFalse();
+	}
+	componentWillUnmount(){
+		this.props.showTrue();
+	}
 }
 
-export default UserFahuo
+export default connect(null,action)(UserFahuo)
