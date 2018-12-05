@@ -31,6 +31,12 @@ class assetYue extends Component{
 			</div>
 		)
 	}
+	componentWillMount(){
+		this.props.hideFalse();
+	}
+	componentWillUnmount(){
+		this.props.showTrue();
+	}
 }
 
-export default assetYue
+export default connect(null,action)(assetYue) 

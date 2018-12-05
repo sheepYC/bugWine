@@ -27,6 +27,12 @@ class AssetJifen extends Component{
 			</div>
 		)
 	}
+	componentWillMount(){
+		this.props.hideFalse();
+	}
+	componentWillUnmount(){
+		this.props.showTrue();
+	}
 }
 
-export default AssetJifen
+export default connect(null,action)(AssetJifen)
